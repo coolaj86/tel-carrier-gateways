@@ -1,8 +1,8 @@
 {
   "name": "tel-carrier-gateways",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lookup the carrier and sms / mms gateway email addresses for a given company name or comment",
-  "main": "carrier",
+  "main": "carriers",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
