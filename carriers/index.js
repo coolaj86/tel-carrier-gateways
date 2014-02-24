@@ -3,23 +3,7 @@
 var carriers
   ;
 
-carriers =
-[ require('./verizon')
-, require('./att')
-, require('./tmobile')
-, require('./sprint')
-, require('./virgin')
-, require('./cingular')
-, require('./sprint')
-, require('./nextel')
-, require('./uscellular')
-, require('./suncom')
-, require('./powertel')
-, require('./alltel')
-, require('./metropcs')
-, require('./cricket')
-, require('./boost')
-];
+carriers = require('./in-the-wild').concat(require('./historic'));
 
 function lookupByComment(comment) {
   var name
