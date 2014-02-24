@@ -80,7 +80,7 @@ function createTestCarrier(carrierName) {
     var re = new RegExp(carrierName, 'i')
       ;
 
-    return re.test(string);
+    return re.test((string||'').replace(/[\W\-]+/g, ''));
   }
 
   return testCarrier;
@@ -169,13 +169,13 @@ function phoneToEmail(number, carrier) {
   return module.exports.sms(carrier, number);
 }
 
-function lookupCarrier(str) {
+function lookupCarrierName(str) {
   str = (str || '').replace(/.*@/, '');
 
   return (lookupBySms(str) || lookupByMms(str) || lookupByComment(str) || null);
 }
 
-function lookupSms(carrierString, num) {
+function lookupSmsAddress(carrierString, num) {
   num = formatNum(num);
   var sms = lookupSms(carrierString)
     ;
@@ -189,7 +189,7 @@ function lookupSms(carrierString, num) {
   return null;
 }
 
-function lookupMms(carrierString, num) {
+function lookupMmsAddress(carrierString, num) {
   num = formatNum(num);
   var mms = lookupMms(carrierString)
     ;
@@ -207,9 +207,9 @@ module.exports = phoneToEmail;
 module.exports.carriers = carriersSms;
 module.exports.gateways = carriers;
 
-module.exports.sms = lookupSms;
-module.exports.mms = lookupMms;
-module.exports.carrier = lookupCarrier;
+module.exports.sms = lookupSmsAddress;
+module.exports.mms = lookupMmsAddress;
+module.exports.carrier = lookupCarrierName;
 module.exports.lookup = lookup;
 module.exports.carrierBySms = lookupBySms;
 module.exports.carrierByMms = lookupBySms;

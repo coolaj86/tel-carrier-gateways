@@ -1,14 +1,38 @@
-tel-carrier-gateways
+tel-carrier-gateway
 ====================
 
-Lookup the carrier and sms / mms gateway email addresses for a given company name or comment
+(this project may be merged into the `sms-address` module)
+
+Performs a lookup of the mobile phone carrier company name to get the sms and mms gateway email addresses for that carrier.
+
+You can use the SMS gateway address to send text messages from email.
+
+Usage
+===
+
+```bash
+npm install sms-address
+```
+
+```javascript
+'use strict';
+
+var smsAddress = require('sms-address')
+  , email
+  ;
+
+email = smsAddress.sms('verizon', 5550002222);
+
+console.log(email);
+// 5550002222@vtext.com
+```
 
 API
 ===
 
-  * sms
-  * mms
-  * carrier
+  * `sms` - lookup sms domain or email
+  * `mms` - lookup mms domain or email
+  * `carrier` - reverse lookup carrier from sms, mms, or company name
 
 ### sms
 
