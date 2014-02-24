@@ -11,13 +11,13 @@ Usage
 ===
 
 ```bash
-npm install sms-address
+npm install tel-carrier-gateway
 ```
 
 ```javascript
 'use strict';
 
-var smsAddress = require('sms-address')
+var smsAddress = require('tel-carrier-gateway')
   , email
   ;
 
@@ -33,6 +33,7 @@ API
   * `sms` - lookup sms domain or email
   * `mms` - lookup mms domain or email
   * `carrier` - reverse lookup carrier from sms, mms, or company name
+  * `lookup` - return an object with sms, mms, wireless, and carrier short name
 
 ### sms
 
@@ -79,4 +80,29 @@ lookups.carrier(smsMmsOrCarrierString);       // programmer-friendly carrier nam
 lookups.sms('AT&T Mobility');                 // "att"
 lookups.sms('messaging.sprintpcs.com');       // "sprint"
 lookups.carrier('5550002222@vzwpix.com');     // "verizon"
+```
+
+### lookup
+
+```javascript
+lookups.lookup(carrierStr[, phone, object]);
+```
+
+```javascript
+lookups.lookup("Verizon");
+
+{ carrier: 'verizon'
+, smsGateway: 'vtext.com'
+, mmsGateway: 'vzwpix.com'
+}
+
+
+lookups.lookup("Verizon Wireless", '5550002222', { foo: "bar" });
+
+{ foo: 'bar'
+, wireless: true
+, carrier: 'verizon'
+, smsAddress: '5550002222@vtext.com
+, mmsAddress: '5550002222@vzwpix.com
+}
 ```
