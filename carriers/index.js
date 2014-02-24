@@ -1,9 +1,21 @@
 'use strict';
 
 var carriers
+  , carriersSms = {}
   ;
 
 carriers = require('./in-the-wild').concat(require('./historic'));
+carriers.forEach(function (c) {
+  carriersSms[c.name] = c.sms;
+});
+
+function formatNum(num) {
+  num = String(num).replace(/\D/g, '').replace(/^\+?1/, '');
+  if (!/^\d{10}/.test(num)) {
+    return null;
+  }
+  return num;
+}
 
 function lookupByComment(comment) {
   var name
@@ -23,7 +35,7 @@ function lookupByComment(comment) {
   return name;
 }
 
-function lookupBySmsGateway(gateway) {
+function lookupBySms(gateway) {
   var name
     ;
 
@@ -32,8 +44,8 @@ function lookupBySmsGateway(gateway) {
   }
 
   carriers.some(function (carrier) {
-    if (carrier.smsGateway) {
-      if (new RegExp(carrier.smsGateway, 'i').test(gateway)) {
+    if (carrier.sms) {
+      if (new RegExp(carrier.sms, 'i').test(gateway)) {
         name = carrier.name;
         return true;
       }
@@ -43,36 +55,72 @@ function lookupBySmsGateway(gateway) {
   return name;
 }
 
-function lookup(number, type, map) {
+function lookupByMms(gateway) {
+  var name
+    ;
+
+  if (!gateway) {
+    return;
+  }
+
+  carriers.some(function (carrier) {
+    if (carrier.mms) {
+      if (new RegExp(carrier.mms, 'i').test(gateway)) {
+        name = carrier.name;
+        return true;
+      }
+    }
+  });
+
+  return name;
+}
+
+function createTestCarrier(carrierName) {
+  function testCarrier(string) {
+    var re = new RegExp(carrierName, 'i')
+      ;
+
+    return re.test(string);
+  }
+
+  return testCarrier;
+}
+
+function lookup(type, map) {
   var ctype = (type||'').replace(/-/, '').replace(/\s+/g, ' ')
     ;
 
   carriers.some(function (carrier) {
-    function isWireless(number, string) {
+    var testWireless
+      ;
+
+    function isWireless(string) {
       if (/wireless|pcs|cellular/i.test(string)) {
         return true;
       }
     }
 
-    function test(number, string) {
-      var re = new RegExp(carrier.name, 'i')
-        ;
-
-      return re.test(string);
-    }
-
-    if ((carrier.test||test)(number, ctype)) {
-      if ((carrier.isWireless||isWireless)(number, ctype)) {
+    if ((carrier.test||createTestCarrier(carrier))(ctype)) {
+      if (true === typeof carrier.wireless) {
         map.wireless = true;
+      } else {
+        if ('function' === typeof carrier.wireless) {
+          testWireless = carrier.wireless;
+        } else {
+          testWireless = isWireless;
+        }
+        if (testWireless(ctype)) {
+          map.wireless = true;
+        }
       }
 
       map.carrier = carrier.name;
       if (map.wireless) {
-        if (carrier.smsGateway) {
-          map.smsGateway = number + '@' + carrier.smsGateway; 
+        if (carrier.sms) {
+          map.smsGateway = formatNum(map.number) + '@' + carrier.sms; 
         }
-        if (carrier.mmsGateway) {
-          map.mmsGateway = number + '@' + carrier.mmsGateway; 
+        if (carrier.mms) {
+          map.mmsGateway = formatNum(map.number) + '@' + carrier.mms; 
         }
       }
 
@@ -83,7 +131,90 @@ function lookup(number, type, map) {
   return map;
 }
 
-module.exports.carriers = carriers;
+function lookupSms(str) {
+  var sms
+    ;
+
+  carriers.some(function (carrier) {
+    var test = carrier.test || createTestCarrier(carrier.name)
+      ;
+
+    if (test(str)) {
+      sms = carrier.sms || null;
+      return sms;
+    }
+  });
+
+  return sms;
+}
+
+function lookupMms(str) {
+  var mms
+    ;
+
+  carriers.some(function (carrier) {
+    var test = carrier.test || createTestCarrier(carrier.name)
+      ;
+
+    if (test(str)) {
+      mms = carrier.mms || null;
+      return mms;
+    }
+  });
+
+  return mms;
+}
+
+function phoneToEmail(number, carrier) {
+  return module.exports.sms(carrier, number);
+}
+
+function lookupCarrier(str) {
+  str = (str || '').replace(/.*@/, '');
+
+  return (lookupBySms(str) || lookupByMms(str) || lookupByComment(str) || null);
+}
+
+function lookupSms(carrierString, num) {
+  num = formatNum(num);
+  var sms = lookupSms(carrierString)
+    ;
+
+  if (sms) {
+    if (num) {
+      return num + '@' + sms;
+    }
+    return sms;
+  }
+  return null;
+}
+
+function lookupMms(carrierString, num) {
+  num = formatNum(num);
+  var mms = lookupMms(carrierString)
+    ;
+
+  if (mms) {
+    if (num) {
+      return num + '@' + mms;
+    }
+    return mms;
+  }
+  return null;
+}
+
+module.exports = phoneToEmail;
+module.exports.carriers = carriersSms;
+module.exports.gateways = carriers;
+
+module.exports.sms = lookupSms;
+module.exports.mms = lookupMms;
+module.exports.carrier = lookupCarrier;
 module.exports.lookup = lookup;
-module.exports.lookupBySmsGateway = lookupBySmsGateway;
+module.exports.carrierBySms = lookupBySms;
+module.exports.carrierByMms = lookupBySms;
+module.exports.carrierByComment = lookupByComment;
+
+// Deprecated
+module.exports.lookupBySmsGateway = lookupBySms;
 module.exports.lookupByComment = lookupByComment;

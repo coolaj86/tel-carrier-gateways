@@ -1,6 +1,6 @@
 {
   "name": "tel-carrier-gateways",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Lookup the carrier and sms / mms gateway email addresses for a given company name or comment",
   "main": "carriers",
   "scripts": {

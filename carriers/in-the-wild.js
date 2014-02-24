@@ -22,7 +22,8 @@
 */
 
 module.exports = [
-  { "carrier": "Alaska"
+  { "name": "alaska"
+  , "carrier": "Alaska"
   , "wireless": true
   , "sms": "sms.alaska-wireless.com"
   , "mms": "msg.acsalaska.net"
@@ -35,7 +36,7 @@ module.exports = [
   , "wireless": null
   , "sms": "txt.att.net"
   , "mms": "mms.att.net"
-  , "test": function test(number, string) {
+  , "test": function test(string) {
       var re = /\b(AT\s*&?\s*T|cingular)\b/i
         ;
 
@@ -57,7 +58,8 @@ module.exports = [
   , "mms": "mms.mycricket.com"
   , "updated": 1393227602319
   }
-, { "carrier": "Qwest Corporation"
+, { "name": "qwest"
+  , "carrier": "Qwest Corporation"
     // might be voip? or mislabled?
   , "wireless": false
   , "sms": "qwestmp.com"
@@ -81,7 +83,7 @@ module.exports = [
   , "wireless": true
   , "sms": "tmomail.net"
   , "mms": "tmomail.net"
-  , "test": function (number, string) {
+  , "test": function (string) {
       // being careful not to match boos*tmobile*
       var re = /\bt-?mobile\b/i
         ;
@@ -91,7 +93,7 @@ module.exports = [
   , "updated": 1393227602319
   }
 , { "name": "metropcs"
-  , "carrier": "MetroPCS"
+  , "carrier": "T-Mobile_MetroPCS"
   , "wireless": true
     // was "mymetropcs.com" but is now T-Mobile
   , "sms": "tmomail.net"
@@ -103,7 +105,7 @@ module.exports = [
   , "wireless": true
   , "sms": "email.uscc.net"
   , "mms": "mms.uscc.net"
-  , "test": function (number, string) {
+  , "test": function (string) {
       var re = /\b((u\.?s\.?\s*cellular)|(united\s*states\s*cellular))\b/i
         ;
 

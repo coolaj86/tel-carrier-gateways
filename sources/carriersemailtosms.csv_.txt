@@ -1,0 +1,72 @@
+http://beaver6813.com/wp-content/uploads/2009/11/carriersemailtosms.csv_.txt
+
+Carrier,Region,Email,Message Format
+Aircel,"[18 circles], India",number@aircel.co.in,text
+Airtel,"Andhra Pradesh, India",number@airtelap.com,text
+Airtel,"Karnataka, India",number@airtelkkk.com,text
+Alaska Communications Systems,USA,number@msg.acsalaska.net,text
+Alltel Wireless (presently merging with Verizon Wireless),USA,number@message.Alltel.com,text
+Alltel Wireless Alternative,USA,number@text.wireless.alltel.com,text
+AT&T Wireless,USA,number@txt.att.net,emailaddress text
+Older AT&T Wireless,USA,number@mmode.com,emailaddress text
+AT&T Mobility (formerly Cingular),USA,number@txt.att.net ,text
+Cingular (Now AT&T),USA,number@cingularme.com,text
+AT&T Enterprise Paging,USA,number@page.att.net,text
+Bell Mobility & Solo Mobile,Canada,number@txt.bell.ca,text
+Bell Mobility Alternative,Canada,number@txt.bellmobility.ca,text
+Boost Mobile,USA,number@boostmobile.com,text
+Bouygues Télécom,France,number@mms.bouyguestelecom.fr,text
+Loop (BPL Mobile),"Mumbai, India",number@bplmobile.com,text
+Cellular One (Dobson),USA,number@mobile.celloneusa.com,text
+Cingular (Postpaid),USA,number@cingular.com,text
+Centennial Wireless,"USA, Puerto Rico, and the U.S. Virgin Islands",number@cwemail.com,text
+Cincinnati Bell,USA,number@gocbw.com,text
+Cingular (GoPhone prepaid),USA,number@cingulartext.com,text
+Claro (Brasil),Brasil,number@clarotorpedo.com.br,text
+Claro (Nicaragua),Nicaragua,number@ideasclaro-ca.com,text
+Comcel,Colombia,number@comcel.com.co,text
+Cricket,,number@sms.mycricket.com,text
+CTI Móvil (Now Claro),Argentina,number@sms.ctimovil.com.ar,text
+Emtel,Mauritius,number@emtelworld.net,text
+Fido,Canada,number@fido.ca,text
+General Communications Inc.,Alaska,number@mobile.gci.net,text
+Globalstar (satellite),,number@msg.globalstarusa.com,text
+Helio,,number@myhelio.com,text
+Iridium,,number@msg.iridium.com[6],text
+i wireless (T-Mobile),,number.iws@iwspcs.net,text
+i-wireless (Sprint PCS),,number@iwirelesshometext.com,text
+Koodo Mobile,Canada,number@msg.telus.com,text
+Mero Mobile,Nepal,+977number@sms.spicenepal.com,text
+MetroPCS,,number@mymetropcs.com,text
+Movicom,,number@movimensaje.com.ar,text
+Mobitel,Sri Lanka,number@sms.mobitel.lk,text
+Movistar,Colombia,number@movistar.com.co,text
+MTN,South Africa,number@sms.co.za,text
+MTS Mobility,Canada,number@text.mtsmobility.com,text
+Nextel ,United States,number@messaging.nextel.com,text
+Nextel,México,number@msgnextel.com.mx,text
+Nextel,Argentina,number@nextel.net.ar,text
+Orange Polska,Poland,number@orange.pl,text
+Plus,Poland,+48number@text.plusgsm.pl,text
+PC Telecom,Canada,number@mobiletxt.ca,text
+Qwest Wireless,USA,number@qwestmp.com,text
+Rogers Wireless,Canada,number@pcs.rogers.com,text
+SaskTel,Canada,number@sms.sasktel.com,text
+Setar Mobile,Aruba,+297number@mas.aw,text
+Sprint (PCS),USA,number@messaging.sprintpcs.com,text
+Sprint (Nextel),USA,number@page.nextel.com,text
+Suncom,,number@tms.suncom.com,text
+Sunrise Communications,Switzerland,number@gsm.sunrise.ch,text
+Syringa Wireless,USA,number@rinasms.com,text
+T-Mobile,USA,+1number@tmomail.net,text
+T-Mobile,Austria,number@sms.t-mobile.at,text
+T-Mobile,Croatia,+385number@sms.t-mobile.hr,emailaddress##subject#text
+Telus Mobility,Canada,number@msg.telus.com,text
+Tigo (Formerly Ola),Colombia,number@sms.tigo.com.co,text
+Tracfone (prepaid),,number@mmst5.tracfone.com,text
+Unicel,USA,number@utext.com,text
+US Cellular,USA,number@email.uscc.net,text
+Verizon,USA,number@vtext.com,text
+Viaero,USA,number@viaerosms.com,text
+Virgin Mobile,Canada,number@vmobile.ca,text
+Virgin Mobile,USA,number@vmobl.com,text
