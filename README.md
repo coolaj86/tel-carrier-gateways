@@ -1,4 +1,4 @@
-tel-carrier-gateway
+tel-carrier-gateways
 ====================
 
 (this project may be merged into the `sms-address` module)
@@ -11,13 +11,13 @@ Usage
 ===
 
 ```bash
-npm install tel-carrier-gateway
+npm install tel-carrier-gateways
 ```
 
 ```javascript
 'use strict';
 
-var smsAddress = require('tel-carrier-gateway')
+var smsAddress = require('tel-carrier-gateways')
   , email
   ;
 
